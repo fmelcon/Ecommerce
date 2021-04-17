@@ -1,0 +1,83 @@
+.tabla {
+  border-radius: 10px;
+  text-align: center;
+  padding: 5px;
+  margin: 2rem auto;
+  background-color: rgba(0, 0, 0, 0.425);
+  &__img {
+    height: 100px;
+    object-fit: contain;
+  }
+  &__title {
+    font-size: 1rem;
+    margin: 1rem;
+    padding: 0px 2rem;
+    color: white;
+  }
+  &__info {
+    color: rgb(255, 255, 255);
+    padding: 0px 2rem;
+  }
+}
+
+.gotohome {
+  color: white;
+}
+
+.cartview {
+  text-align: center;
+  color: rgb(0, 0, 0);
+}
+
+.total {
+  font-size: 2rem;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.425);
+}
+
+.borrar {
+  background-color: red;
+  padding: 6px 10px;
+  border-radius: 50%;
+  color: white;
+  transition: all cubic-bezier(0.215, 0.61, 0.355, 1) 0.3s;
+  font-weight: 600;
+}
+
+.borrar:hover {
+  transform: translateY(2px);
+  outline: none;
+  background-color: rgba(255, 0, 0, 0.363);
+}
+
+.borrartodo {
+  background-color: red;
+  padding: 6px 10px;
+  font-size: 1.5rem;
+  color: white;
+  border-radius: 10px;
+  transition: all cubic-bezier(0.215, 0.61, 0.355, 1) 0.3s;
+  font-weight: 600;
+}
+
+.borrartodo:hover {
+  transform: translateY(2px);
+  outline: none;
+  background-color: rgba(255, 0, 0, 0.363);
+}
+
+.confirmar {
+  background-color: rgb(19, 175, 53);
+  padding: 6px 10px;
+  font-size: 1.5rem;
+  color: white;
+  border-radius: 10px;
+  transition: all cubic-bezier(0.215, 0.61, 0.355, 1) 0.3s;
+  font-weight: 600;
+}
+
+.confirmar:hover {
+  transform: translateY(2px);
+  outline: none;
+  background-color: rgba(19, 175, 53, 0.424);
+}
