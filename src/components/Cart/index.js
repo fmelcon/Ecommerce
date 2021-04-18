@@ -71,10 +71,10 @@ const cartView = () => {
   const noItemComp = (
     <div className="contcart">
       <h2 className="titulo">
-        No hay Items en el carrito{" "}
+        No hay Items en el carrito
         <Link className="gotohome" to="/">
-          Ir al home{" "}
-        </Link>{" "}
+          Ir al home
+        </Link>
       </h2>
     </div>
   );
