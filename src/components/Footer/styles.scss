@@ -1,0 +1,35 @@
+footer {
+  background: linear-gradient(194.01deg, #d9e8ef 9.6%, #eaf2f5 89.64%);
+  padding-bottom: 0.1px;
+}
+
+.footer-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.contact-us {
+  width: 40%;
+  color: rgb(0, 0, 0);
+}
+.brand {
+  font-weight: 300;
+  font-size: 40px;
+}
+.brand + p {
+  font-weight: 500;
+}
+
+.line {
+  width: 90%;
+  max-width: 85%;
+  margin: 0 auto;
+  height: 2px;
+  background: #5e19ae;
+  margin-bottom: 60px;
+}
+.registred {
+  text-align: center;
+  color: rgb(187, 187, 187);
+}

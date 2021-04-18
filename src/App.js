@@ -7,6 +7,7 @@ import Home from "./components/Home";
 import { Route } from "react-router-dom";
 import { CartProvider } from "./context/CartContext";
 import Cart from "./components/Cart";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/category/:categoryId" component={ItemListContainer} />
         <Route path="/item/:itemId" component={ItemDetailContainer} />
         <Route path="/cart" component={Cart} />
+        <Footer />
       </div>
     </CartProvider>
   );
