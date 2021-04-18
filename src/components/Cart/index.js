@@ -69,12 +69,14 @@ const cartView = () => {
     });
   };
   const noItemComp = (
-    <h2 className="titulo">
-      No hay Items en el carrito{" "}
-      <Link className="gotohome" to="/">
-        Ir al home{" "}
-      </Link>{" "}
-    </h2>
+    <div className="contcart">
+      <h2 className="titulo">
+        No hay Items en el carrito{" "}
+        <Link className="gotohome" to="/">
+          Ir al home{" "}
+        </Link>{" "}
+      </h2>
+    </div>
   );
 
   return cart.length <= 0 ? (
