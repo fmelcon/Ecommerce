@@ -31,7 +31,7 @@ npm start
 ```
 _Puedes tambien entar al siguiente Link el cual ya tiene la App Deployed_
 
-ecommerce-coderhouse.netlify.app/
+https://ecommerce-coderhouse.netlify.app/
 
 Glosario de componentes
 
