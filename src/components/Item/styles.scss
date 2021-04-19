@@ -39,6 +39,7 @@ $breakpoint-lg: 1360px;
   @include media(xs) {
     font-size: 1rem;
     justify-content: center;
+    width: 80%;
   }
 
   &__image {
