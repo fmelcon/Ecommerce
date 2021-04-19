@@ -19,10 +19,15 @@
     padding: 0px 2rem;
   }
 }
+.cartview {
+  min-height: 70vh;
+}
 
-.contcart {
-  min-height: 100vh;
-  display: inline-table;
+.conttext {
+  height: 200px;
+  margin: 0 auto;
+  min-height: 70vh;
+  display: inline-block;
 }
 
 .gotohome {
@@ -56,6 +61,7 @@
 }
 
 .borrartodo {
+  margin: 1rem;
   background-color: red;
   padding: 6px 10px;
   font-size: 1.5rem;

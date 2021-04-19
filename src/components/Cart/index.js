@@ -70,22 +70,25 @@ const cartView = () => {
   };
   const noItemComp = (
     <div className="contcart">
-      <h2 className="titulo">
-        No hay Items en el carrito
-        <Link className="gotohome" to="/">
-          Ir al home
-        </Link>
-      </h2>
+      <div className="conttext">
+        <h2 className="titulo">
+          No hay Items en el carrito
+          <p></p>
+          <Link className="gotohome" to="/">
+            Ir al home
+          </Link>
+        </h2>
+      </div>
     </div>
   );
 
   return cart.length <= 0 ? (
     noItemComp
   ) : (
-    <div className="cartview">
+    <div className="cart__view">
       {cart?.map((cartItem) => {
         return (
-          <div key={cartItem?.item.id}>
+          <div key={cartItem?.item.id} className="cart__container">
             <table className="tabla">
               <thead>
                 <tr>

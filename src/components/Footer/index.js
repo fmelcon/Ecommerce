@@ -6,8 +6,8 @@ const Footer = () => {
     <footer id="contacto">
       <div className="footer-content">
         <div className="contact-us" id="contact">
-          <h2 className="brand">F.M design</h2>
-          <p className="logo-name">E-commerce</p>
+          <h2 className="brand">F.M design®</h2>
+          <p className="logo-name">E-Commerce Coderhouse</p>
         </div>
       </div>
       <div className="line"></div>
