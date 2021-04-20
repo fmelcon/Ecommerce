@@ -9,7 +9,9 @@ export default function CartWidget() {
   return (
     <div>
       <CartIcon size="2.5rem" color="white" />
-      <span className="notification">{cart.totalItems}</span>
+      {cart.totalItems ? (
+        <span className="notification"> {cart.totalItems}</span>
+      ) : null}
     </div>
   );
 }
