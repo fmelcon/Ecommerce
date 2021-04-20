@@ -6,7 +6,6 @@ import "react-toastify/dist/ReactToastify.css";
 
 export function ItemCount({ stock, initial, onAdd }) {
   const [count, setCount] = useState(parseInt(initial));
-
   const addHandle = () => {
     setCount(count + 1);
   };

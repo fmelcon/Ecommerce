@@ -60,6 +60,8 @@ $breakpoint-lg: 1360px;
     border-radius: 8px;
     display: inline-block;
     color: white;
+    transition: all cubic-bezier(0.215, 0.61, 0.355, 1) 0.3s;
+    padding: 10px 10px;
     font-family: Poppins;
     font-style: normal;
     font-weight: 600;

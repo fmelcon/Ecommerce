@@ -1,39 +1,72 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { CartContext } from "../../context/CartContext";
 import "./styles.scss";
-import { getFirestore } from "../../firebase";
 import firebase from "firebase/app";
+import { getFirestore } from "../../firebase";
 import "firebase/firestore";
+//toast
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Link } from "react-router-dom";
 
-const cartView = () => {
+export const cartView = () => {
+  //estados
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [email, setEmail] = useState("");
+  const [setIdOrden] = useState(null);
+  //contexto
   const { cart, removeItem, clear } = useContext(CartContext);
 
-  const generarOrden = () => {
-    const db = getFirestore();
-    const odrdersCol = db.collection("orders");
+  const guardarOrden = () => {
+    const comprador = { name, phone, email };
+    console.log(comprador);
 
-    let orden = {};
-    orden.date = firebase.firestore.Timestamp.fromDate(new Date());
-    orden.buyer = { name: "juan", email: "mail@mail.com", telefono: "4643030" };
-    orden.total = cart.totalPrice;
-    orden.items = cart.map((cartItem) => {
-      const id = cartItem.item.id;
-      const title = cartItem.item.title;
-      const price = cartItem.item.price * cartItem.quantity;
-      return { id, title, price };
+    const db = getFirestore();
+    const ordersCollection = db.collection("orders");
+
+    const date = firebase.firestore.Timestamp.fromDate(new Date());
+    const items = cart.map((cartItem) => {
+      return {
+        id: cartItem.item.id,
+        title: cartItem.item.title,
+        price: cartItem.item.price,
+      };
     });
 
-    odrdersCol
-      .add(orden)
-      .then((idDocumento) => {
-        console.log(idDocumento.id); //salio bien
-      })
-      .catch((err) => {
-        console.log(err);
-        toast.error("Ocurrio un error!!", {
+    console.log(items);
+    ordersCollection
+      .add({ buyer: comprador, items, date, total: cart.totalPrice })
+      .then((doc) => {
+        setIdOrden(doc.id);
+      });
+
+    const itemsCollection = db.collection("items").where(
+      firebase.firestore.FieldPath.documentId(),
+      "in",
+      cart.map((e) => e.item.id)
+    );
+
+    itemsCollection.get().then((result) => {
+      const batch = db.batch();
+
+      for (const documento of result) {
+        const stockActual = documento.data().stock;
+
+        const itemDelCart = cart.find(
+          (cartItem) => cartItem.item.id === documento.id
+        );
+
+        const cantidadComprado = itemDelCart.quantity;
+
+        const nuevoStock = stockActual - cantidadComprado;
+
+        batch.update(documento.ref, { stock: nuevoStock });
+        //update
+      }
+
+      batch.commit().then(() => {
+        toast.success("Tu compra fue exitosa!", {
           position: "bottom-right",
           autoClose: 5000,
           hideProgressBar: false,
@@ -42,32 +75,10 @@ const cartView = () => {
           draggable: true,
           progress: undefined,
         });
-      })
-      .finally(() => {
-        console.log("soy un spinner , termino la promesa");
       });
-
-    const batch = db.batch();
-    // por cada item restar del stock la cantidad de el carrito
-    for (const cartItem of cart) {
-      const docRef = db.collection("items").doc(cartItem.item.id);
-      batch.update(docRef, {
-        stock: cartItem.item.stock - cartItem.quantity,
-      });
-    }
-    batch.commit().then((res) => {
-      console.log("resultado batch:", res);
-    });
-    toast.success("Tu compra fue exitosa!", {
-      position: "bottom-right",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
     });
   };
+
   const noItemComp = (
     <div className="contcart">
       <div className="conttext">
@@ -86,6 +97,35 @@ const cartView = () => {
     noItemComp
   ) : (
     <div className="cart__view">
+      <div>
+        <form action="" onSubmit={guardarOrden}>
+          <input
+            placeholder="Nombre"
+            type="text"
+            value={name}
+            required
+            onChange={(e) => setName(e.target.value)}
+          />
+          <input
+            placeholder="(0223)6078311"
+            type="text"
+            value={phone}
+            required
+            onChange={(e) => setPhone(e.target.value)}
+          />
+          <input
+            type="email"
+            placeholder="Mail@mail.com"
+            value={email}
+            required
+            onChange={(e) => setEmail(e.target.value)}
+          />
+
+          <button type="submit" className="confirmar">
+            Generar orden
+          </button>
+        </form>
+      </div>
       {cart?.map((cartItem) => {
         return (
           <div key={cartItem?.item.id} className="cart__container">
@@ -126,9 +166,6 @@ const cartView = () => {
       })}
       <span className="total">Total: ${cart?.totalPrice}</span>
       <p>
-        <button className="confirmar" onClick={generarOrden}>
-          Finalizar Compra
-        </button>
         <button className="borrartodo" onClick={clear}>
           Borrar todo
         </button>
