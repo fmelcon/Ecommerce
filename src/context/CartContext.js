@@ -41,12 +41,6 @@ export const CartProvider = ({ defaultValue = [], children }) => {
     setCart([]);
   }; // Remover todos los items
 
-  // const isInCart = (id) => {
-  //   const currentItem = cart.find((e) => e.item.id === id);
-
-  //   return currentItem ? true : false;
-  // }; // true|false
-
   return (
     <CartContext.Provider value={{ cart, addItem, removeItem, clear }}>
       {children}
