@@ -1,8 +1,10 @@
 import React from "react";
+import PropTypes from "prop-types";
 
-export const CartIcon  = ({ size = "1rem", color = "white", ...rest }) => {
+export const CartIcon = ({ size = "1rem", color = "white", ...rest }) => {
   return (
-    <svg className="carticon"
+    <svg
+      className="carticon"
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"
@@ -18,6 +20,11 @@ export const CartIcon  = ({ size = "1rem", color = "white", ...rest }) => {
       />
     </svg>
   );
+};
+
+CartIcon.propTypes = {
+  color: PropTypes.string,
+  size: PropTypes.string,
 };
 
 export const PlusIcon = ({ size = "1rem", color = "white", ...rest }) => {
@@ -40,6 +47,11 @@ export const PlusIcon = ({ size = "1rem", color = "white", ...rest }) => {
   );
 };
 
+PlusIcon.propTypes = {
+  color: PropTypes.string,
+  size: PropTypes.string,
+};
+
 export const MinusIcon = ({ size = "1rem", color = "white", ...rest }) => {
   return (
     <svg
@@ -57,4 +69,9 @@ export const MinusIcon = ({ size = "1rem", color = "white", ...rest }) => {
       />
     </svg>
   );
+};
+
+MinusIcon.propTypes = {
+  color: PropTypes.string,
+  size: PropTypes.string,
 };

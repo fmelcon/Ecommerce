@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import React from "react";
 import { Item } from "../Item";
 import "./styles.scss";
@@ -10,4 +11,8 @@ export const ItemList = ({ items = [] }) => {
       ))}
     </div>
   );
+};
+
+ItemList.propTypes = {
+  items: PropTypes.array,
 };

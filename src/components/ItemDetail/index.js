@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import { ItemCount } from "../ItemCount";
 import { Link } from "react-router-dom";
-
+import PropTypes from "prop-types";
 import { CartContext } from "../../context/CartContext";
 import "./styles.scss";
 
@@ -13,6 +13,7 @@ export function ItemDetail({ item }) {
     addItem(item, contador);
     setCount(contador);
   };
+  console.log("item stock ", item?.stock);
 
   return (
     <div className="containerf">
@@ -29,7 +30,7 @@ export function ItemDetail({ item }) {
       </div>
 
       {count === 0 ? (
-        <ItemCount stock="20" initial="1" onAdd={addHandler} />
+        <ItemCount stock={item?.stock} initial={1} onAdd={addHandler} />
       ) : (
         <div>
           <Link to="/cart">
@@ -48,3 +49,13 @@ export function ItemDetail({ item }) {
     </div>
   );
 }
+
+ItemDetail.propTypes = {
+  item: PropTypes.shape({
+    pictureUrl: PropTypes.string,
+    title: PropTypes.string,
+    description: PropTypes.string,
+    price: PropTypes.number,
+    stock: PropTypes.number,
+  }),
+};

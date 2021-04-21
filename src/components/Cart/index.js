@@ -10,17 +10,18 @@ import "react-toastify/dist/ReactToastify.css";
 import { Link } from "react-router-dom";
 
 export const CartView = () => {
-  //estados
-  const [name, setName] = useState("");
-  const [phone, setPhone] = useState("");
-  const [email, setEmail] = useState("");
+  const [user, setUser] = useState({
+    name: "",
+    phone: "",
+    email: "",
+  });
+
   const [idOrden, setIdOrden] = useState(null);
   //contexto
   const { cart, removeItem, clear } = useContext(CartContext);
 
   const guardarOrden = (e) => {
     e.preventDefault();
-    const comprador = { name, phone, email };
 
     const db = getFirestore();
     const ordersCollection = db.collection("orders");
@@ -35,7 +36,7 @@ export const CartView = () => {
     });
 
     ordersCollection
-      .add({ buyer: comprador, items, date, total: cart.totalPrice })
+      .add({ buyer: user, items, date, total: cart.totalPrice })
       .then((doc) => {
         setIdOrden(doc.id);
       });
@@ -91,6 +92,10 @@ export const CartView = () => {
       </div>
     </div>
   );
+  console.log({ user });
+  const handleUser = (e) => {
+    setUser((user) => ({ ...user, [e.target.name]: e.target.value }));
+  };
 
   return cart.length <= 0 ? (
     noItemComp
@@ -142,23 +147,26 @@ export const CartView = () => {
           <input
             placeholder="Nombre"
             type="text"
-            value={name}
+            value={user.name}
             required
-            onChange={(e) => setName(e.target.value)}
+            name="name"
+            onChange={handleUser}
           />
           <input
             placeholder="(0223)6078311"
             type="text"
-            value={phone}
+            value={user.phone}
             required
-            onChange={(e) => setPhone(e.target.value)}
+            name="phone"
+            onChange={handleUser}
           />
           <input
             type="email"
             placeholder="Mail@mail.com"
-            value={email}
+            value={user.email}
             required
-            onChange={(e) => setEmail(e.target.value)}
+            name="email"
+            onChange={handleUser}
           />
 
           <button type="submit" className="confirmar">

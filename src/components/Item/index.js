@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./styles.scss";
+import PropTypes from "prop-types";
 
 export const Item = ({ item }) => {
   return (
@@ -15,4 +16,15 @@ export const Item = ({ item }) => {
       </Link>
     </div>
   );
+};
+
+Item.propTypes = {
+  item: PropTypes.shape({
+    pictureUrl: PropTypes.string,
+    title: PropTypes.string,
+    description: PropTypes.string,
+    price: PropTypes.number,
+    stock: PropTypes.number,
+    id: PropTypes.string,
+  }),
 };
