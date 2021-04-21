@@ -20,13 +20,13 @@
   }
 }
 .cart__view {
-  min-height: 70vh;
+  min-height: 80vh;
 }
 
 .conttext {
   height: 200px;
   margin: 0 auto;
-  min-height: 70vh;
+  min-height: 76vh;
   display: inline-block;
 }
 
@@ -61,11 +61,16 @@
   background-color: rgba(255, 0, 0, 0.363);
 }
 
+.buttons {
+  display: flex;
+  justify-content: center;
+}
+
 .borrartodo {
-  margin: 1rem;
   background-color: red;
   padding: 6px 10px;
-  font-size: 1.5rem;
+  margin: 5px;
+  font-size: 1rem;
   color: white;
   border-radius: 10px;
   transition: all cubic-bezier(0.215, 0.61, 0.355, 1) 0.3s;
@@ -81,7 +86,8 @@
 .confirmar {
   background-color: rgb(19, 175, 53);
   padding: 6px 10px;
-  font-size: 1.5rem;
+  font-size: 1rem;
+  margin: 5px;
   color: white;
   border-radius: 10px;
   transition: all cubic-bezier(0.215, 0.61, 0.355, 1) 0.3s;
@@ -97,4 +103,10 @@
 form {
   display: flex;
   flex-direction: column;
+  width: 300px;
+  margin: auto;
+}
+
+.orden__exitosa {
+  color: green;
 }

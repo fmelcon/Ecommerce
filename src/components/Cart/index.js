@@ -142,7 +142,9 @@ export const CartView = () => {
         })}
       </div>
       <div>
-        {idOrden ? `Orden generada: ${idOrden}` : null}
+        <h2 className="orden__exitosa">
+          {idOrden ? `Orden generada: ${idOrden}` : null}
+        </h2>
         <form action="" onSubmit={guardarOrden}>
           <input
             placeholder="Nombre"
@@ -168,16 +170,20 @@ export const CartView = () => {
             name="email"
             onChange={handleUser}
           />
-
-          <button type="submit" className="confirmar">
-            Generar orden
-          </button>
         </form>
-        <p>
-          <button className="borrartodo" onClick={clear}>
-            Borrar todo
-          </button>
-        </p>
+
+        <div className="buttons">
+          <p>
+            <button type="submit" className="confirmar">
+              Generar orden
+            </button>
+          </p>
+          <p>
+            <button className="borrartodo" onClick={clear}>
+              Borrar todo
+            </button>
+          </p>
+        </div>
         <span className="total">Total: ${cart?.totalPrice}</span>
       </div>
     </div>

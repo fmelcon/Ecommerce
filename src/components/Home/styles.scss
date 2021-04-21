@@ -62,10 +62,10 @@ $breakpoint-lg: 1360px;
   }
   &__text {
     margin-top: 2rem;
-    font-size: 1.5rem;
-    max-width: 30%;
+    font-size: 1.2rem;
+    max-width: 36%;
     @include media(md) {
-      font-size: 1.5rem;
+      font-size: 1.2rem;
       margin-top: 5px;
     }
     @include media(sm) {

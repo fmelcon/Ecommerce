@@ -28,6 +28,7 @@ $breakpoint-lg: 1360px;
   text-align: center;
   justify-content: center;
   flex-direction: column;
+  height: 76vh;
   @include media(xs) {
     display: flex;
     flex-wrap: wrap;
@@ -41,7 +42,7 @@ $breakpoint-lg: 1360px;
     flex-wrap: wrap;
   }
   @include media(lg) {
-    font-size: 1.7rem;
+    font-size: 1.2rem;
   }
 }
 .itemf {
