@@ -18,7 +18,8 @@ export const cartView = () => {
   //contexto
   const { cart, removeItem, clear } = useContext(CartContext);
 
-  const guardarOrden = () => {
+  const guardarOrden = (e) => {
+    e.preventDefault();
     const comprador = { name, phone, email };
     console.log(comprador);
 

@@ -13,6 +13,7 @@ export default function ItemListContainer() {
     const db = getFirestore();
     const itemsCollection = db.collection("items");
     const filtrado = itemsCollection
+
       .where("categoria", "==", categoryId)
       .limit(10);
     const prom = filtrado.get();
