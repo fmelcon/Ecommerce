@@ -145,6 +145,7 @@ export const CartView = () => {
         <h2 className="orden__exitosa">
           {idOrden ? `Orden generada: ${idOrden}` : null}
         </h2>
+        <h2>Formulario</h2>
         <form action="" onSubmit={guardarOrden}>
           <input
             placeholder="Nombre"
