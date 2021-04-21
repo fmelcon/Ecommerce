@@ -14,7 +14,7 @@ export const cartView = () => {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
-  const [setIdOrden] = useState(null);
+  const [idOrden, setIdOrden] = useState(null);
   //contexto
   const { cart, removeItem, clear } = useContext(CartContext);
 
@@ -99,6 +99,7 @@ export const cartView = () => {
   ) : (
     <div className="cart__view">
       <div>
+        {idOrden ? `Orden generada: ${idOrden}` : null}
         <form action="" onSubmit={guardarOrden}>
           <input
             placeholder="Nombre"
