@@ -13,8 +13,6 @@ export function ItemDetail({ item }) {
     addItem(item, contador);
     setCount(contador);
   };
-  console.log("item stock ", item?.stock);
-
   return (
     <div className="containerf">
       <div className="itemf">
