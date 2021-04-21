@@ -5,11 +5,11 @@ import firebase from "firebase/app";
 import { getFirestore } from "../../firebase";
 import "firebase/firestore";
 //toast
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Link } from "react-router-dom";
 
-export const cartView = () => {
+export const CartView = () => {
   //estados
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
@@ -21,7 +21,6 @@ export const cartView = () => {
   const guardarOrden = (e) => {
     e.preventDefault();
     const comprador = { name, phone, email };
-    console.log(comprador);
 
     const db = getFirestore();
     const ordersCollection = db.collection("orders");
@@ -35,7 +34,6 @@ export const cartView = () => {
       };
     });
 
-    console.log(items);
     ordersCollection
       .add({ buyer: comprador, items, date, total: cart.totalPrice })
       .then((doc) => {
@@ -48,35 +46,35 @@ export const cartView = () => {
       cart.map((e) => e.item.id)
     );
 
-    itemsCollection.get().then((result) => {
-      const batch = db.batch();
+    itemsCollection.get().then((resultado) => {
+      if (resultado.exists) {
+        const batch = db.batch();
+        const ordenData = resultado.data();
+        for (const documento of ordenData) {
+          const stockActual = documento.data().stock;
 
-      for (const documento of result) {
-        const stockActual = documento.data().stock;
+          const itemDelCart = cart.find(
+            (cartItem) => cartItem.item.id === documento.id
+          );
 
-        const itemDelCart = cart.find(
-          (cartItem) => cartItem.item.id === documento.id
-        );
+          const cantidadComprado = itemDelCart.quantity;
 
-        const cantidadComprado = itemDelCart.quantity;
+          const nuevoStock = stockActual - cantidadComprado;
 
-        const nuevoStock = stockActual - cantidadComprado;
+          batch.update(documento.ref, { stock: nuevoStock });
+        }
 
-        batch.update(documento.ref, { stock: nuevoStock });
-        //update
+        batch.commit().then(() => {});
       }
-
-      batch.commit().then(() => {
-        toast.success("Tu compra fue exitosa!", {
-          position: "bottom-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        });
-      });
+    });
+    toast.success("Tu compra fue exitosa!", {
+      position: "bottom-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
     });
   };
 
@@ -98,6 +96,46 @@ export const cartView = () => {
     noItemComp
   ) : (
     <div className="cart__view">
+      <div>
+        {cart?.map((cartItem) => {
+          return (
+            <div key={cartItem?.item.id} className="cart__container">
+              <table className="tabla">
+                <thead>
+                  <tr>
+                    <th className="tabla__title">Imagen</th>
+                    <th className="tabla__title">Nombre</th>
+                    <th className="tabla__title">Precio</th>
+                    <th className="tabla__title">Cantidad</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <img
+                        className="tabla__img"
+                        alt="producto"
+                        src={cartItem?.item?.pictureUrl}
+                      />
+                    </td>
+                    <td className="tabla__info">{cartItem?.item?.title}</td>
+                    <td className="tabla__info">${cartItem?.item?.price}</td>
+                    <td className="tabla__info">{cartItem?.quantity}</td>
+                    <td>
+                      <button
+                        className="borrar"
+                        onClick={() => removeItem(cartItem.item.id)}
+                      >
+                        X
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          );
+        })}
+      </div>
       <div>
         {idOrden ? `Orden generada: ${idOrden}` : null}
         <form action="" onSubmit={guardarOrden}>
@@ -127,54 +165,15 @@ export const cartView = () => {
             Generar orden
           </button>
         </form>
+        <p>
+          <button className="borrartodo" onClick={clear}>
+            Borrar todo
+          </button>
+        </p>
+        <span className="total">Total: ${cart?.totalPrice}</span>
       </div>
-      {cart?.map((cartItem) => {
-        return (
-          <div key={cartItem?.item.id} className="cart__container">
-            <table className="tabla">
-              <thead>
-                <tr>
-                  <th className="tabla__title">Imagen</th>
-                  <th className="tabla__title">Nombre</th>
-                  <th className="tabla__title">Precio</th>
-                  <th className="tabla__title">Cantidad</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>
-                    <img
-                      className="tabla__img"
-                      alt="producto"
-                      src={cartItem?.item?.pictureUrl}
-                    />
-                  </td>
-                  <td className="tabla__info">{cartItem?.item?.title}</td>
-                  <td className="tabla__info">${cartItem?.item?.price}</td>
-                  <td className="tabla__info">{cartItem?.quantity}</td>
-                  <td>
-                    <button
-                      className="borrar"
-                      onClick={() => removeItem(cartItem.item.id)}
-                    >
-                      X
-                    </button>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        );
-      })}
-      <span className="total">Total: ${cart?.totalPrice}</span>
-      <p>
-        <button className="borrartodo" onClick={clear}>
-          Borrar todo
-        </button>
-      </p>
-      <ToastContainer />
     </div>
   );
 };
 
-export default cartView;
+export default CartView;

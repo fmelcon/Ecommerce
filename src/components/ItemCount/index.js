@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import "./styles.scss";
 import { PlusIcon, MinusIcon } from "../Icons";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import PropTypes from "prop-types";
 
 export function ItemCount({ stock, initial, onAdd }) {
   const [count, setCount] = useState(parseInt(initial));
@@ -16,15 +15,6 @@ export function ItemCount({ stock, initial, onAdd }) {
 
   const agregar = () => {
     onAdd(count);
-    toast.success("Agregado al carrito!", {
-      position: "bottom-right",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });
   };
 
   return (
@@ -53,9 +43,14 @@ export function ItemCount({ stock, initial, onAdd }) {
           Agregar carrito
         </button>
       </p>
-      <ToastContainer />
     </div>
   );
 }
+
+ItemCount.propTypes = {
+  stock: PropTypes.number.isRequired,
+  initial: PropTypes.number.isRequired,
+  onAdd: PropTypes.func.isRequired,
+};
 
 export default ItemCount;

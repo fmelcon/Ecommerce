@@ -93,3 +93,8 @@
   outline: none;
   background-color: rgba(19, 175, 53, 0.424);
 }
+
+form {
+  display: flex;
+  flex-direction: column;
+}
