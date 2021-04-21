@@ -35,4 +35,11 @@ https://ecommerce-coderhouse.netlify.app/
 
 Glosario de componentes
 
+los componentes adicionales que agregue al Trabajo son:
+
+Home: una vista estilo DashBoard para recibir al usuario
+Footer: contiene El brand del creador Fmelcon
+Icons: iconos que traje de una web, y prototype para usarlos luego en el contador y el carrito
+
+
 
