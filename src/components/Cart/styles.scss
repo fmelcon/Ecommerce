@@ -3,7 +3,7 @@
   text-align: center;
   padding: 5px;
   margin: 2rem auto;
-  background-color: rgba(0, 0, 0, 0.425);
+  background: linear-gradient(194.01deg, #000000de 9.6%, #000000e3 89.64%);
   &__img {
     height: 100px;
     object-fit: contain;
@@ -11,12 +11,11 @@
   &__title {
     font-size: 1rem;
     margin: 1rem;
-    padding: 0px 2rem;
     color: white;
   }
   &__info {
     color: rgb(255, 255, 255);
-    padding: 0px 2rem;
+    padding: 0px 1rem;
   }
 }
 .cart__view {
@@ -41,13 +40,15 @@
 }
 
 .total {
-  font-size: 2rem;
+  border-radius: 10px;
+  font-size: 1.3rem;
+  padding: 10px;
   color: white;
-  background-color: rgba(0, 0, 0, 0.425);
+  background: linear-gradient(194.01deg, #000000de 9.6%, #000000e3 89.64%);
 }
 
 .borrar {
-  background-color: red;
+  background-color: rgba(255, 0, 0, 0.822);
   padding: 6px 10px;
   border-radius: 50%;
   color: white;
@@ -67,7 +68,7 @@
 }
 
 .borrartodo {
-  background-color: red;
+  background-color: rgb(184, 25, 25);
   padding: 6px 10px;
   margin: 5px;
   font-size: 1rem;
