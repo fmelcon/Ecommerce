@@ -61,16 +61,15 @@ $breakpoint-lg: 1360px;
     }
   }
   &__text {
-    margin-top: 2rem;
     font-size: 1.2rem;
     max-width: 36%;
+    align-self: center;
     @include media(md) {
       font-size: 1.2rem;
       margin-top: 5px;
     }
     @include media(sm) {
       font-size: 1.2rem;
-      margin-top: 8px;
       text-align: left;
     }
     @include media(xs) {
@@ -109,13 +108,13 @@ $breakpoint-lg: 1360px;
     }
   }
   &__reactimg {
-    margin-top: 2rem;
+    margin-top: 1.3rem;
     @include media(md) {
-      margin: 2rem;
+      margin-top: 1.3rem;
     }
     @include media(sm) {
       width: 300px;
-      margin-top: 2rem;
+      margin-top: 1.3rem;
     }
     @include media(xs) {
       margin: 0;

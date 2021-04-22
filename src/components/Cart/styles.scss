@@ -20,6 +20,11 @@
 }
 .cart__view {
   min-height: 80vh;
+  text-align: center;
+}
+
+.contcart {
+  text-align: center;
 }
 
 .conttext {
@@ -104,7 +109,7 @@
 form {
   display: flex;
   flex-direction: column;
-  width: 300px;
+  width: 255px;
   margin: auto;
 }
 
