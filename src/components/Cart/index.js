@@ -20,8 +20,8 @@ export const CartView = () => {
   //contexto
   const { cart, removeItem, clear } = useContext(CartContext);
 
-  const guardarOrden = (e) => {
-    e.preventDefault();
+  const guardarOrden = () => {
+    // e.preventDefault();
 
     const db = getFirestore();
     const ordersCollection = db.collection("orders");
@@ -65,7 +65,7 @@ export const CartView = () => {
           batch.update(documento.ref, { stock: nuevoStock });
         }
 
-        batch.commit().then(() => {});
+        batch.commit();
       }
     });
     toast.success("Tu compra fue exitosa!", {

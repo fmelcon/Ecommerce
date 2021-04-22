@@ -28,7 +28,7 @@ $breakpoint-lg: 1360px;
   text-align: center;
   justify-content: center;
   flex-direction: column;
-  height: 76vh;
+  min-height: 76vh;
   @include media(xs) {
     display: flex;
     flex-wrap: wrap;
@@ -73,7 +73,6 @@ $breakpoint-lg: 1360px;
   &__image {
     border-radius: 10px;
     object-fit: cover;
-    height: 350px;
     @include media(xs) {
       font-size: 0.8rem;
       max-width: 300px;
@@ -84,7 +83,7 @@ $breakpoint-lg: 1360px;
   &__title {
     color: rgba(3, 0, 0, 0.678);
     font-weight: 800;
-    font-size: 1.8rem;
+    font-size: 1.2rem;
     @include media(xs) {
       font-size: 1rem;
     }
@@ -92,9 +91,9 @@ $breakpoint-lg: 1360px;
   &__price {
     color: #5e19ae;
     font-weight: 500;
-    font-size: 1.8rem;
+    font-size: 1.2rem;
     @include media(xs) {
-      font-size: 1rem;
+      font-size: 0.7rem;
     }
   }
 

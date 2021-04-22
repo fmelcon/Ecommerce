@@ -2,8 +2,9 @@
   border-radius: 10px;
   text-align: center;
   padding: 5px;
+  min-width: 375px;
   margin: 2rem auto;
-  background: linear-gradient(194.01deg, #000000de 9.6%, #000000e3 89.64%);
+  background: linear-gradient(194.01deg, #000000d2 9.6%, #000000ce 89.64%);
   &__img {
     height: 100px;
     object-fit: contain;
@@ -20,7 +21,9 @@
 }
 .cart__view {
   min-height: 80vh;
+  height: auto;
   text-align: center;
+  margin: 1.3rem;
 }
 
 .contcart {
