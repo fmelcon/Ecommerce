@@ -142,11 +142,15 @@ export const CartView = () => {
         })}
       </div>
       <div>
-        <h2 className="orden__exitosa">
-          {idOrden ? `Orden generada: ${idOrden}` : null}
+        <h2>
+          {idOrden
+            ? "Orden generada:" +
+              <span className="orden__exitosa">{idOrden}</span>
+            : null}
         </h2>
         <h2>Formulario</h2>
         <form action="" onSubmit={guardarOrden}>
+          <label>Nombre:</label>
           <input
             placeholder="Nombre"
             type="text"
@@ -155,6 +159,7 @@ export const CartView = () => {
             name="name"
             onChange={handleUser}
           />
+          <label>Telefono:</label>
           <input
             placeholder="(0223)6078311"
             type="text"
@@ -163,6 +168,7 @@ export const CartView = () => {
             name="phone"
             onChange={handleUser}
           />
+          <label>Email:</label>
           <input
             type="email"
             placeholder="Mail@mail.com"
