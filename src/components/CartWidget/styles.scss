@@ -1,10 +1,12 @@
 .notification {
-  background-color: red;
-  margin: 1px;
-  padding: 2px 8px;
+  background-color: #e41919;
+  padding: 0px 4px;
+  margin: auto;
+  top: -20px;
+  right: 0;
   color: white;
   border-radius: 50%;
-  position: absolute;
-  font-family: monospace;
+  position: relative;
   text-decoration: none;
+  outline: none;
 }
