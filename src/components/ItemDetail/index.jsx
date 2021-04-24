@@ -23,7 +23,9 @@ export function ItemDetail({ item }) {
         ></img>
         <span className="itemf__title">{item?.title}</span>
         <span className="itemf__detail">Stock: {item?.description}</span>
-        <span className="itemf__price">Precio: ${item?.price}</span>
+        <span className="itemf__stock">
+          Precio:<span className="itemf__price">${item?.price}</span>
+        </span>
         <span className="itemf__stock">Stock: {item?.stock}</span>
       </div>
 

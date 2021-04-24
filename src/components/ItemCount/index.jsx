@@ -18,7 +18,7 @@ export function ItemCount({ stock, initial, onAdd }) {
     onAdd(count);
     toast.success("Producto agregado", {
       position: "bottom-right",
-      autoClose: 5000,
+      autoClose: 3000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
