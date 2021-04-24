@@ -22,7 +22,6 @@ export const CartView = () => {
 
   const guardarOrden = (e) => {
     e.preventDefault();
-    console.log("ejecutando");
     const db = getFirestore();
     const ordersCollection = db.collection("orders");
 
@@ -91,11 +90,9 @@ export const CartView = () => {
       </div>
     </div>
   );
-  console.log({ user });
   const handleUser = (e) => {
     setUser((user) => ({ ...user, [e.target.name]: e.target.value }));
   };
-  console.log(idOrden);
   return cart.length <= 0 ? (
     noItemComp
   ) : (
