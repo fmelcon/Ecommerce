@@ -69,7 +69,7 @@ export const CartView = () => {
     });
     toast.success("Tu compra fue exitosa!", {
       position: "bottom-right",
-      autoClose: 5000,
+      autoClose: 4000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
