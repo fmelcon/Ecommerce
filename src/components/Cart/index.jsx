@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { CartContext } from "../../context/CartContext";
 import "./styles.scss";
+//firebase
 import firebase from "firebase/app";
 import { getFirestore } from "../../firebase";
 import "firebase/firestore";
@@ -40,33 +41,13 @@ export const CartView = () => {
         setIdOrden(doc.id);
       });
 
-    const itemsCollection = db.collection("items").where(
-      firebase.firestore.FieldPath.documentId(),
-      "in",
-      cart.map((e) => e.item.id)
-    );
-
-    itemsCollection.get().then((resultado) => {
-      if (resultado.exists) {
-        const batch = db.batch();
-        const ordenData = resultado.data();
-        for (const documento of ordenData) {
-          const stockActual = documento.data().stock;
-
-          const itemDelCart = cart.find(
-            (cartItem) => cartItem.item.id === documento.id
-          );
-
-          const cantidadComprado = itemDelCart.quantity;
-
-          const nuevoStock = stockActual - cantidadComprado;
-
-          batch.update(documento.ref, { stock: nuevoStock });
-        }
-
-        batch.commit();
-      }
+    //Actualiza Stock
+    cart.forEach((element) => {
+      db.collection("items")
+        .doc(element.item.id)
+        .update({ stock: element.item.stock - element.quantity });
     });
+
     toast.success("Tu compra fue exitosa!", {
       position: "bottom-right",
       autoClose: 4000,

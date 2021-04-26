@@ -5,14 +5,14 @@ import PropTypes from "prop-types";
 
 export const Item = ({ item }) => {
   return (
-    <div className="item">
+    <div className={`item ${item.stock <= 0 ? "disabled" : ""}`}>
       <img className="item__image" src={item.pictureUrl} alt="imagen" />
       <span className="item__title">{item.title}</span>
       <span className="item__price">${item.price}</span>
       <span className="item__detail">{item.description}</span>
 
       <Link className="item__link" to={`/item/${item.id}`}>
-        Ver Producto
+        {item.stock <= 0 ? "Sin Stock" : "Ver Producto"}
       </Link>
     </div>
   );
