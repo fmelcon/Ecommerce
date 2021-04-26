@@ -3,11 +3,19 @@ import { ItemList } from "../ItemList";
 import { useParams } from "react-router-dom";
 import "./styles.scss";
 import { getFirestore } from "../../firebase";
+import Loading from "../Loading";
 
 export default function ItemListContainer() {
   const [items, setItems] = useState([]);
-
+  const [loading, setLoading] = useState(false);
   const { categoryId } = useParams();
+
+  const cambiarEstado = () => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 1500);
+  };
 
   useEffect(() => {
     const db = getFirestore();
@@ -19,6 +27,7 @@ export default function ItemListContainer() {
     const prom = filtrado.get();
 
     prom.then((snaptshot) => {
+      cambiarEstado();
       if (snaptshot.size > 0) {
         setItems(
           snaptshot.docs.map((doc) => {
@@ -29,6 +38,9 @@ export default function ItemListContainer() {
     });
   }, [categoryId]);
 
+  if (loading) {
+    return <Loading />;
+  }
   return (
     <div className="containeritems">
       <h2 className="titulo">Nuestros {categoryId}</h2>

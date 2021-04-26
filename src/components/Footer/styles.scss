@@ -9,6 +9,7 @@ footer {
   text-align: center;
 
   &__container {
+    padding: 1.2rem;
     color: rgb(255, 255, 255);
   }
   &__brand {
@@ -27,7 +28,7 @@ footer {
     margin: 0 auto;
     height: 2px;
     background: #5e19ae;
-    margin-bottom: 1rem;
+    margin-bottom: 1.2rem;
   }
   &__registred {
     text-align: center;
