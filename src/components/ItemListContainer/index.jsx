@@ -38,13 +38,16 @@ export default function ItemListContainer() {
     });
   }, [categoryId]);
 
-  if (loading) {
-    return <Loading />;
-  }
   return (
     <div className="containeritems">
-      <h2 className="titulo">Nuestros {categoryId}</h2>
-      <ItemList items={items} />
+      {loading && <Loading />}
+
+      {!loading && (
+        <>
+          <h2 className="titulo">Nuestros {categoryId}</h2>
+          <ItemList items={items} />
+        </>
+      )}
     </div>
   );
 }
