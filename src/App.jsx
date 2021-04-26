@@ -26,8 +26,8 @@ function App() {
         />
         <Route exact path="/item/:itemId" component={ItemDetailContainer} />
         <Route exact path="/cart" component={Cart} />
-        <Route path="/404" component={ErrorPage} />
-        <Redirect to="/404" />
+        {/* <Route path="/404" component={ErrorPage} />
+        <Redirect to="/404" /> */}
         <Footer />
         <ToastContainer />
       </div>
