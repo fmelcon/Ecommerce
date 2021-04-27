@@ -11,7 +11,6 @@ import Footer from "./components/Footer";
 import NavBar from "./components/NavBar";
 import ItemListContainer from "./components/ItemListContainer";
 import ItemDetailContainer from "./components/ItemDetailContainer";
-import ErrorPage from "./components/ErrorPage";
 
 function App() {
   return (
@@ -26,8 +25,6 @@ function App() {
         />
         <Route exact path="/item/:itemId" component={ItemDetailContainer} />
         <Route exact path="/cart" component={Cart} />
-        {/* <Route path="/404" component={ErrorPage} />
-        <Redirect to="/404" /> */}
         <Footer />
         <ToastContainer />
       </div>
