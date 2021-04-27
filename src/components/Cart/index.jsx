@@ -72,6 +72,12 @@ export const CartView = () => {
             Ir al home
           </Link>
         </h2>
+        {idOrden && (
+          <h2>
+            Código de ultima Orden:
+            <span className="orden__exitosa"> {idOrden}</span>
+          </h2>
+        )}
       </div>
     </div>
   );
