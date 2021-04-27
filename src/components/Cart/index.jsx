@@ -48,9 +48,13 @@ export const CartView = () => {
         .update({ stock: element.item.stock - element.quantity });
     });
 
+    setTimeout(() => {
+      clear();
+    }, 6000);
+
     toast.success("Tu compra fue exitosa!", {
       position: "bottom-right",
-      autoClose: 4000,
+      autoClose: 6000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
