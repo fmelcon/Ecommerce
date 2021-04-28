@@ -42,7 +42,7 @@ yarn dev
 ```
 _Puedes tambien entar al siguiente Link el cual ya tiene la App Deployed_
 
-# Demo deployada en Vite 2.0⚡⚡⚡
+# ⚡⚡⚡Demo deployada en Vite 2.0⚡⚡⚡
 
 https://ecommerce-coderhouse.netlify.app/
 
