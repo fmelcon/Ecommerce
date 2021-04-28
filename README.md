@@ -22,7 +22,7 @@ _💡Clonar la Repo:💡_
 clone git https://github.com/fmelcon/ecommerce
 ```
 
-###recuerda que para usar vite 2.0 es necesario tener
+### :warning: recuerda que para usar vite 2.0 es necesario tener :warning:
 :warning: NPM>12.0 e installar tambien Yarn :warning:
 
 ```
